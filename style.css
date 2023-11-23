@@ -1,37 +1,37 @@
 .timer-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full height */
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 50px auto;
+    text-align: center;
 }
 
-.timer-circle {
-    width: 200px; /* Taille du cercle */
-    height: 200px;
-    border-radius: 50%;
-    background: conic-gradient(#4e4e4e 25%, #ededed 25%); /* Gradient pour montrer la progression */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.timer {
+    position: relative;
+}
+
+.progress-ring__circle {
+    transition: 0.35s stroke-dashoffset;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
 }
 
 .timer-label {
-    font-size: 3rem; /* Taille du texte plus grande */
-    color: #fff; /* Texte blanc pour contraste */
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
 }
 
-/* Stylisation des boutons */
-button {
-    border: none;
+.end-break-button {
+    display: block;
+    margin: 20px auto;
     padding: 10px 20px;
-    margin: 5px;
-    border-radius: 20px; /* Boutons arrondis */
-    background-color: #4CAF50; /* Couleur de fond */
-    color: white; /* Texte en blanc */
-    cursor: pointer;
-    transition: background-color 0.3s; /* Transition douce au survol */
-}
-
-button:hover {
-    background-color: #45a049; /* Couleur au survol */
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 20px;
+    font-size: 1em;
 }
