@@ -1,48 +1,40 @@
 .timer-container {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Utilisez toute la hauteur de la fenêtre */
+    background: #f3f3f3; /* Couleur de fond pour tout le conteneur */
 }
 
 .timer-circle {
     transform: rotate(-90deg);
     width: 200px;
     height: 200px;
-    fill: none; /* Assurez-vous que l'intérieur du cercle est transparent */
 }
 
 .timer-path-elapsed {
     fill: none;
     stroke: #ededed;
     stroke-width: 10px;
-    stroke: #ededed; /* Couleur de fond du chemin du cercle pour contraste */
 }
 
 .timer-path-remaining {
     fill: none;
     stroke-width: 10px;
-    stroke: #4e4e4e;
+    stroke: blue; /* Couleur de la progression */
     transition: 1s linear all;
     transform: rotate(0deg);
     transform-origin: center;
-    stroke: blue; /* Couleur du chemin restant pour la progression */
 }
 
 .timer-label {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    line-height: 200px; /* same as timer-container height */
     font-size: 3em;
     font-weight: bold;
-    fill: #fff; /* Couleur du texte pour qu'il soit visible */
-    font-size: 3em; /* Ajustez la taille de la police si nécessaire */
+    color: #333; /* Couleur du texte pour qu'il soit visible */
 }
 
 .end-break-button {
-    display: block;
-    margin: 20px auto;
     padding: 10px 20px;
     border: none;
     background-color: #4CAF50;
