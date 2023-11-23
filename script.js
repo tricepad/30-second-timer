@@ -1,28 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var timerElement = document.getElementById('timer-label');
-    var customTimeInput = document.getElementById('customTime');
-    var startButton = document.getElementById('startButton');
-    var stopButton = document.getElementById('stopButton');
-    var timeButtons = document.querySelectorAll('.timeButton');
-    var endSound = document.getElementById('endSound');
-    var timerPathRemaining = document.getElementById('timer-path-remaining');
-    var interval;
-    var totalTime = 30; // Temps total en secondes
+    var timerLabel = document.getElementById('timer-label');
+    var endBreakButton = document.getElementById('end-break-button');
+    var progressRingCircle = document.querySelector('.progress-ring__circle');
+    var radius = progressRingCircle.r.baseVal.value;
+    var circumference = radius * 2 * Math.PI;
+    var totalTime = 180; // Exemple pour 3 minutes (180 secondes)
     var timeLeft = totalTime;
-
-    // Mettre à jour le cercle de progression SVG
-    function setCircleDasharray() {
-        const circleDasharray = `${(timeLeft / totalTime) * 283} 283`;
-        timerPathRemaining.setAttribute('stroke-dasharray', circleDasharray);
+    progressRingCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+    progressRingCircle.style.strokeDashoffset = circumference;
+    
+    function setProgress(percent) {
+        const offset = circumference - (percent / 100) * circumference;
+        progressRingCircle.style.strokeDashoffset = offset;
     }
-
-    function updateTimerDisplay(newTime) {
-        totalTime = newTime;
-        timeLeft = newTime;
-        timerElement.textContent = timeLeft.toString().padStart(2, '0');
-        setCircleDasharray(); // Mettre à jour le cercle de progression
-    }
-
+    
     function startTimer() {
         clearInterval(interval);
         interval = setInterval(function() {
