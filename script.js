@@ -5,23 +5,22 @@ document.addEventListener('DOMContentLoaded', function() {
     var startButton = document.getElementById('startButton');
     var timeButtons = document.querySelectorAll('.timeButton');
     var interval;
-    var timeLeft = 30; // Initialisation avec 30 secondes par défaut
+    var lastTimeSelected = 30; // Variable pour stocker le dernier temps choisi
 
     // Fonction pour mettre à jour le timer et l'affichage.
     function updateTimerDisplay(newTime) {
-        timeLeft = newTime;
-        timerElement.textContent = newTime; // Met à jour l'affichage avec la nouvelle valeur
+        lastTimeSelected = newTime; // Mettre à jour le dernier temps choisi
+        timerElement.textContent = newTime;
     }
 
     // Fonction pour démarrer le timer.
     function startTimer() {
         clearInterval(interval); // Nettoyer l'intervalle précédent s'il y en a un
+        timeLeft = lastTimeSelected; // Utiliser le dernier temps choisi
         interval = setInterval(function() {
             if (timeLeft <= 0) {
                 clearInterval(interval);
                 endSound.play();
-                // Optionnel: vous pouvez également réinitialiser le timer ici si nécessaire
-                // updateTimerDisplay(30); // ou toute autre valeur par défaut
             } else {
                 timerElement.textContent = timeLeft;
                 timeLeft -= 1;
@@ -47,6 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Écouter l'événement 'ended' sur l'élément audio pour réinitialiser le timer.
     endSound.addEventListener('ended', function() {
-        updateTimerDisplay(30); // Réinitialiser le timer à 30 secondes après la fin du son
+        updateTimerDisplay(lastTimeSelected); // Réinitialiser le timer au dernier temps choisi après la fin du son
     });
 });
