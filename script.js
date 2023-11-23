@@ -6,14 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
     var stopButton = document.getElementById('stopButton'); // Le bouton Stop
     var timeButtons = document.querySelectorAll('.timeButton');
     var interval;
-    var timeLeft; // Déclaration de la variable timeLeft
-    var lastTimeSelected = 30; // La dernière durée sélectionnée, initialisée à 30 secondes
+    var timeLeft = 30; // Durée initiale et variable pour stocker le temps restant
 
     // Fonction pour mettre à jour le timer et l'affichage.
     function updateTimerDisplay(newTime) {
-        timeLeft = newTime; // Assurez-vous de mettre à jour timeLeft
-        lastTimeSelected = newTime; // Mettre à jour la dernière valeur sélectionnée
-        timerElement.textContent = newTime; // Mettre à jour l'affichage du timer
+        timeLeft = newTime; // Mettre à jour timeLeft avec le nouveau temps
+        timerElement.textContent = timeLeft; // Mettre à jour l'affichage du timer
     }
 
     // Fonction pour démarrer le timer.
@@ -25,40 +23,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 endSound.play();
             } else {
                 timerElement.textContent = timeLeft; // Mettre à jour l'affichage
-                timeLeft -= 1; // Décrémenter le timer
+                timeLeft--; // Décrémenter le timer
             }
         }, 1000);
     }
 
-    // Fonction pour arrêter et réinitialiser le timer.
-    function stopAndResetTimer() {
+    // Fonction pour arrêter le timer.
+    function stopTimer() {
         clearInterval(interval); // Arrêter le timer
-        updateTimerDisplay(lastTimeSelected); // Réinitialiser l'affichage au dernier temps choisi
+        updateTimerDisplay(timeLeft); // Réafficher le temps restant sans réinitialiser
     }
 
-    // Écoute des clics sur les boutons de temps prédéfinis.
+    // Fonction pour réinitialiser le timer.
+    function resetTimer() {
+        clearInterval(interval); // Arrêter le timer
+        updateTimerDisplay(30); // Réinitialiser à 30 secondes
+    }
+
+    // Ajouter l'écoute des clics sur les boutons de durée prédéfinie.
     timeButtons.forEach(function(button) {
         button.addEventListener('click', function() {
             updateTimerDisplay(parseInt(this.dataset.time, 10)); // Mettre à jour le timer avec le temps prédéfini
         });
     });
 
-    // Écoute du clic sur le bouton Démarrer.
-    startButton.addEventListener('click', function() {
-        var customTime = parseInt(customTimeInput.value, 10); // Obtenir la valeur du champ de saisie personnalisé
-        if (!isNaN(customTime) && customTime > 0) {
-            updateTimerDisplay(customTime); // Si c'est un nombre valide, mettre à jour le timer
-        }
-        startTimer(); // Démarrer le timer
-    });
+    // Écouter le clic sur le bouton Démarrer.
+    startButton.addEventListener('click', startTimer);
 
-    // Écoute du clic sur le bouton Stop.
+    // Écouter le clic sur le bouton Stop.
     stopButton.addEventListener('click', function() {
-        stopAndResetTimer(); // Arrêter et réinitialiser le timer
+        stopTimer(); // Arrêter le timer sans réinitialiser
     });
 
-    // Écoute de la fin du son pour réinitialiser le timer.
-    endSound.addEventListener('ended', function() {
-        updateTimerDisplay(lastTimeSelected); // Quand le son est fini, réinitialiser le timer
-    });
+    // Écouter la fin du son pour réinitialiser le timer.
+    endSound.addEventListener('ended', resetTimer);
 });
