@@ -1,53 +1,42 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const timerLabel = document.getElementById('timer-label');
-    const timerPathRemaining = document.getElementById('timer-path-remaining');
-    const radius = 90; // Rayon du cercle SVG
-    const circumference = 2 * Math.PI * radius;
-    let timeLeft = 30; // Temps initial en secondes (30 secondes)
-    let interval;
+const svg = document.getElementById('timer-svg');
+const path = document.getElementById('timer-path');
+const label = document.getElementById('timer-label');
+let duration = 30; // Durée initiale du timer en secondes
+let timeLeft = duration;
+let pathLength;
 
-    timerPathRemaining.style.strokeDasharray = `${circumference} ${circumference}`;
-    timerPathRemaining.style.strokeDashoffset = `${circumference}`;
-    function startTimer(duration) {
-        clearInterval(interval);
-        let timePassed = 0;
-        timeLeft = duration;
-        interval = setInterval(() => {
-            timePassed = timePassed += 1;
-            timeLeft = duration - timePassed;
-            timerLabel.textContent = formatTime(timeLeft);
-            setCircleDashoffset(timeLeft, duration);
+window.onload = () => {
+  const radius = svg.width.baseVal.value / 2 - 10; // 10 est la marge intérieure
+  const circumference = radius * 2 * Math.PI;
+  pathLength = circumference;
+  path.style.strokeDasharray = circumference;
+  
+  // Commence avec le chemin plein
+  path.style.strokeDashoffset = circumference;
 
-            if (timeLeft <= 0) {
-                clearInterval(interval);
-                timerLabel.textContent = 'Pause terminée';
-            }
-        }, 1000);
+  startTimer();
+};
+
+function startTimer() {
+  updateTimer(timeLeft);
+  const interval = setInterval(() => {
+    timeLeft--;
+    updateTimer(timeLeft);
+    if (timeLeft <= 0) {
+      clearInterval(interval);
+      label.textContent = "Time's up!";
     }
+  }, 1000);
+}
 
-    function setCircleDashoffset(time, duration) {
-        const dashoffset = circumference - (time / duration) * circumference;
-        timerPathRemaining.style.strokeDashoffset = dashoffset;
-    }
+function updateTimer(seconds) {
+  label.textContent = formatTime(seconds);
+  const offset = pathLength - (seconds / duration) * pathLength;
+  path.style.strokeDashoffset = offset;
+}
 
-    function formatTime(time) {
-        const minutes = Math.floor(time / 60);
-        let seconds = time % 60;
-
-        if (seconds < 10) {
-            seconds = `0${seconds}`;
-        }
-
-        return `${minutes}:${seconds}`;
-    }
-
-    endBreakButton.addEventListener('click', function() {
-        clearInterval(interval);
-        timerLabel.textContent = '0:30';
-        timerPathRemaining.style.strokeDashoffset = circumference;
-        // Vous pouvez mettre à jour cette partie pour redémarrer le timer si nécessaire
-    });
-
-    // Démarrage initial du timer
-    startTimer(30);
-});
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+}
