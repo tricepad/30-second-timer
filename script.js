@@ -33,20 +33,21 @@ document.addEventListener('DOMContentLoaded', function() {
         updateTimerDisplay(lastTimeSelected); // Réinitialiser le timer à lastTimeSelected
     }
 
-    timeButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            updateTimerDisplay(parseInt(this.dataset.time, 10));
-        });
+    // Les boutons de temps prédéfini devraient également démarrer le timer après la mise à jour de l'affichage.
+timeButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+        updateTimerDisplay(parseInt(this.dataset.time, 10));
+        startTimer(); // Ajoutez cet appel pour démarrer le timer avec le temps prédéfini
     });
+});
 
     startButton.addEventListener('click', function() {
-        var customTime = parseInt(customTimeInput.value, 10);
-        if (!isNaN(customTime) && customTime > 0) {
-            updateTimerDisplay(customTime);
-        } else {
-            startTimer();
-        }
-    });
+    var customTime = parseInt(customTimeInput.value, 10);
+    if (!isNaN(customTime) && customTime > 0) {
+        updateTimerDisplay(customTime);
+        startTimer(); // Démarrez le timer avec la valeur personnalisée
+    }
+});
 
     stopButton.addEventListener('click', stopTimer);
 
