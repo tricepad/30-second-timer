@@ -7,23 +7,18 @@
 </head>
 <body>
     <div class="timer-container">
-    <div class="timer">
-        <svg class="progress-ring" width="200" height="200">
-            <circle class="progress-ring__circle" stroke="blue" stroke-width="4" fill="transparent" r="90" cx="100" cy="100"/>
+        <svg class="timer-circle" viewBox="0 0 200 200">
+            <circle class="timer-path-elapsed" cx="100" cy="100" r="90" />
+            <path id="timer-path-remaining" stroke-dasharray="565.48" stroke-dashoffset="0" d="
+                M 100, 100
+                m -90, 0
+                a 90,90 0 1,0 180,0
+                a 90,90 0 1,0 -180,0
+            "></path>
         </svg>
-        <span id="timer-label" class="timer-label">3:02</span>
+        <span id="timer-label" class="timer-label">0:30</span>
     </div>
     <button id="end-break-button" class="end-break-button">Finir la pause</button>
-</div>
-    <div id="timeButtons">
-    <button class="timeButton" data-time="30">30 secondes</button>
-    <button class="timeButton" data-time="60">1 minute</button>
-    <button class="timeButton" data-time="300">5 minutes</button>
-    <button class="timeButton" data-time="600">10 minutes</button>
-    <input type="number" id="customTime" placeholder="Choix libre (en secondes)" min="1">
-    <button id="stopButton">Stop</button>
-    <button id="startButton">Démarrer</button>
-    <audio id="endSound" src="https://github.com/tricepad/30-second-timer/raw/main/6150.mp3"></audio>
     <script src="script.js"></script>
 </body>
 </html>
