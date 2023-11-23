@@ -2,27 +2,37 @@
     position: relative;
     width: 200px;
     height: 200px;
-    margin: 50px auto;
-    text-align: center;
+    margin: auto;
 }
 
-.timer {
-    position: relative;
-}
-
-.progress-ring__circle {
-    transition: 0.35s stroke-dashoffset;
+.timer-circle {
     transform: rotate(-90deg);
-    transform-origin: 50% 50%;
+    width: 200px;
+    height: 200px;
+}
+
+.timer-path-elapsed {
+    fill: none;
+    stroke: #ededed;
+    stroke-width: 10px;
+}
+
+.timer-path-remaining {
+    fill: none;
+    stroke-width: 10px;
+    stroke: #4e4e4e;
+    transition: 1s linear all;
+    transform: rotate(0deg);
+    transform-origin: center;
 }
 
 .timer-label {
     position: absolute;
     width: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2em;
+    text-align: center;
+    line-height: 200px; /* same as timer-container height */
+    font-size: 3em;
+    font-weight: bold;
 }
 
 .end-break-button {
@@ -33,5 +43,5 @@
     background-color: #4CAF50;
     color: white;
     border-radius: 20px;
-    font-size: 1em;
+    cursor: pointer;
 }
