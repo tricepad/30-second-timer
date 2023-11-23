@@ -11,3 +11,38 @@ body {
     font-size: 48px;
     margin-bottom: 20px;
 }
+
+#timeButtons button {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#timeButtons button:hover {
+    background-color: #45a049;
+}
+
+#startButton, #stopButton {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #008CBA;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#startButton:hover, #stopButton:hover {
+    background-color: #007B9E;
+}
+
+input[type="number"] {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
