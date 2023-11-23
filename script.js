@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("Le DOM est chargé"); // Confirmer que le DOM est chargé
     var timerElement = document.getElementById('timer');
     var endSound = document.getElementById('endSound');
     var customTimeInput = document.getElementById('customTime');
@@ -7,19 +6,18 @@ document.addEventListener('DOMContentLoaded', function() {
     var stopButton = document.getElementById('stopButton');
     var timeButtons = document.querySelectorAll('.timeButton');
     var interval;
-    var timeLeft = 30;
+    var lastTimeSelected = 30; // Conserver la dernière valeur sélectionnée
+    var timeLeft = lastTimeSelected; // Initialiser timeLeft avec lastTimeSelected
 
     function updateTimerDisplay(newTime) {
-        console.log("Mise à jour de l'affichage du timer avec", newTime);
-        timeLeft = newTime;
-        timerElement.textContent = timeLeft;
+        lastTimeSelected = newTime; // Mettre à jour lastTimeSelected avec le nouveau temps
+        timeLeft = newTime; // Mettre à jour timeLeft avec le nouveau temps
+        timerElement.textContent = timeLeft; // Afficher le nouveau temps
     }
 
     function startTimer() {
-        console.log("Démarrage du timer");
         clearInterval(interval);
         interval = setInterval(function() {
-            console.log("Timer en cours:", timeLeft);
             if (timeLeft <= 0) {
                 clearInterval(interval);
                 endSound.play();
@@ -31,9 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function stopTimer() {
-        console.log("Arrêt du timer");
         clearInterval(interval);
-        updateTimerDisplay(timeLeft);
+        updateTimerDisplay(lastTimeSelected); // Réinitialiser le timer à lastTimeSelected
     }
 
     timeButtons.forEach(function(button) {
@@ -42,10 +39,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    startButton.addEventListener('click', startTimer);
+    startButton.addEventListener('click', function() {
+        var customTime = parseInt(customTimeInput.value, 10);
+        if (!isNaN(customTime) && customTime > 0) {
+            updateTimerDisplay(customTime);
+        } else {
+            startTimer();
+        }
+    });
+
     stopButton.addEventListener('click', stopTimer);
 
     endSound.addEventListener('ended', function() {
-        updateTimerDisplay(30);
+        updateTimerDisplay(30); // Réinitialiser le timer après la fin du son
     });
 });
