@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     endBreakButton.addEventListener('click', function() {
         clearInterval(interval);
-        timerLabel.textContent = '3:00';
+        timerLabel.textContent = '0:30';
         timerPathRemaining.style.strokeDashoffset = circumference;
         // Vous pouvez mettre à jour cette partie pour redémarrer le timer si nécessaire
     });
 
     // Démarrage initial du timer
-    startTimer(180);
+    startTimer(30);
 });
