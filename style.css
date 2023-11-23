@@ -9,12 +9,14 @@
     transform: rotate(-90deg);
     width: 200px;
     height: 200px;
+    fill: none; /* Assurez-vous que l'intérieur du cercle est transparent */
 }
 
 .timer-path-elapsed {
     fill: none;
     stroke: #ededed;
     stroke-width: 10px;
+    stroke: #ededed; /* Couleur de fond du chemin du cercle pour contraste */
 }
 
 .timer-path-remaining {
@@ -24,6 +26,7 @@
     transition: 1s linear all;
     transform: rotate(0deg);
     transform-origin: center;
+    stroke: blue; /* Couleur du chemin restant pour la progression */
 }
 
 .timer-label {
@@ -33,6 +36,8 @@
     line-height: 200px; /* same as timer-container height */
     font-size: 3em;
     font-weight: bold;
+    fill: #fff; /* Couleur du texte pour qu'il soit visible */
+    font-size: 3em; /* Ajustez la taille de la police si nécessaire */
 }
 
 .end-break-button {
