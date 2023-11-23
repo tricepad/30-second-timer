@@ -1,48 +1,53 @@
-#timer-container {
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background: #F0F4F8; /* Ou la couleur de fond souhaitée */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E0E5EC; /* Couleur de fond claire */
 }
 
-#timer {
-  position: relative;
-  width: 200px; /* Ou la taille souhaitée */
-  height: 200px; /* Ou la taille souhaitée */
+.timer-container {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
 }
 
+/* Style pour le cercle SVG */
 .timer-circle {
-  fill: none;
-  stroke: #D6D6D6;
-  stroke-width: 4;
+    width: 200px;
+    height: 200px;
 }
 
-#timer-path {
-  fill: none;
-  stroke: #3057D5;
-  stroke-width: 4;
-  transition: stroke-dashoffset 0.5s;
+.timer-path-elapsed {
+    stroke: #D3D3D3;
+    stroke-width: 7;
 }
 
-#timer-label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2rem;
-  color: #3057D5;
+.timer-path-remaining {
+    stroke: #4F8EF7;
+    stroke-width: 7;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 1s linear;
+}
+
+.timer-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    color: #333;
 }
 
 #end-break-button {
-  background: #3057D5;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin-top: 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 1rem;
+    margin-top: 30px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #4F8EF7;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 18px;
 }
