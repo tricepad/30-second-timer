@@ -1,38 +1,37 @@
 .timer-container {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height */
 }
 
 .timer-circle {
-    transform: rotate(-90deg);
-    width: 200px;
+    width: 200px; /* Taille du cercle */
     height: 200px;
-}
-
-.timer-path-elapsed {
-    fill: none;
-    stroke: #ededed;
-    stroke-width: 10px;
-}
-
-.timer-path-remaining {
-    fill: none;
-    stroke-width: 10px;
-    stroke: #4e4e4e;
-    transition: 1s linear all;
-    transform: rotate(0deg);
-    transform-origin: center;
+    border-radius: 50%;
+    background: conic-gradient(#4e4e4e 25%, #ededed 25%); /* Gradient pour montrer la progression */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .timer-label {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    font-size: 3em;
-    font-weight: bold;
+    font-size: 3rem; /* Taille du texte plus grande */
+    color: #fff; /* Texte blanc pour contraste */
+}
+
+/* Stylisation des boutons */
+button {
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 20px; /* Boutons arrondis */
+    background-color: #4CAF50; /* Couleur de fond */
+    color: white; /* Texte en blanc */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transition douce au survol */
+}
+
+button:hover {
+    background-color: #45a049; /* Couleur au survol */
 }
