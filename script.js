@@ -1,15 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     const timerLabel = document.getElementById('timer-label');
-    const endBreakButton = document.getElementById('end-break-button');
     const timerPathRemaining = document.getElementById('timer-path-remaining');
     const radius = 90; // Rayon du cercle SVG
     const circumference = 2 * Math.PI * radius;
-    let timeLeft = 180; // Temps initial en secondes (3 minutes)
+    let timeLeft = 30; // Temps initial en secondes (30 secondes)
     let interval;
 
     timerPathRemaining.style.strokeDasharray = `${circumference} ${circumference}`;
     timerPathRemaining.style.strokeDashoffset = `${circumference}`;
-
     function startTimer(duration) {
         clearInterval(interval);
         let timePassed = 0;
