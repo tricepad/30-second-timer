@@ -6,18 +6,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="timer-container">
-        <svg class="timer-circle" viewBox="0 0 200 200">
-            <circle class="timer-path-elapsed" cx="100" cy="100" r="90" />
-            <path id="timer-path-remaining" stroke-dasharray="565.48" stroke-dashoffset="0" d="
-                M 100, 100
-                m -90, 0
-                a 90,90 0 1,0 180,0
-                a 90,90 0 1,0 -180,0
-            "></path>
-        </svg>
-        <span id="timer-label" class="timer-label">0:30</span>
-    </div>
+    <div id="timer-container">
+  <div id="timer">
+    <svg id="timer-svg" viewBox="0 0 100 100">
+      <g transform="translate(50,50)">
+        <circle r="45" class="timer-circle"/>
+        <path id="timer-path" d=""></path>
+      </g>
+    </svg>
+    <div id="timer-label">0:30</div>
+  </div>
+  <button id="end-break-button">End break</button>
+</div>
+
     <button id="end-break-button" class="end-break-button">Finir la pause</button>
     <script src="script.js"></script>
 </body>
