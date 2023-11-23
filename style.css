@@ -1,58 +1,48 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f3f3f3; /* Ou toute autre couleur de fond souhaitée */
+#timer-container {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #F0F4F8; /* Ou la couleur de fond souhaitée */
 }
 
-.timer-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+#timer {
+  position: relative;
+  width: 200px; /* Ou la taille souhaitée */
+  height: 200px; /* Ou la taille souhaitée */
 }
 
 .timer-circle {
-    transform: rotate(-90deg);
-    width: 200px;
-    height: 200px;
+  fill: none;
+  stroke: #D6D6D6;
+  stroke-width: 4;
 }
 
-.timer-path-elapsed {
-    fill: none;
-    stroke: #ededed;
-    stroke-width: 10px;
+#timer-path {
+  fill: none;
+  stroke: #3057D5;
+  stroke-width: 4;
+  transition: stroke-dashoffset 0.5s;
 }
 
-.timer-path-remaining {
-    fill: none;
-    stroke-width: 10px;
-    stroke: #4e4e4e;
-    transition: 1s linear all;
-    transform: rotate(0deg);
-    transform-origin: center;
+#timer-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: #3057D5;
 }
 
-.timer-label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 3em;
-    font-weight: bold;
-    color: #333;
-}
-
-.end-break-button {
-    padding: 10px 20px;
-    margin-top: 20px; /* Ajoutez un espace entre le bouton et le cercle */
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 1em;
+#end-break-button {
+  background: #3057D5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
 }
