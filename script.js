@@ -6,47 +6,41 @@ document.addEventListener('DOMContentLoaded', function() {
     var stopButton = document.getElementById('stopButton');
     var timeButtons = document.querySelectorAll('.timeButton');
     var interval;
-    var timeLeft = 30; // Initialise timeLeft ici
+    var timeLeft = 30; // Durée initiale du timer
 
     function updateTimerDisplay(newTime) {
-        timeLeft = newTime;
-        timerElement.textContent = timeLeft;
+        timeLeft = newTime; // Mettre à jour le temps restant
+        timerElement.textContent = timeLeft; // Mettre à jour l'affichage
     }
 
     function startTimer() {
-        clearInterval(interval);
+        clearInterval(interval); // Arrêter tout timer existant
         interval = setInterval(function() {
             if (timeLeft <= 0) {
-                clearInterval(interval);
-                endSound.play();
+                clearInterval(interval); // Arrêter le timer si le temps est écoulé
+                endSound.play(); // Jouer le son
             } else {
-                timerElement.textContent = timeLeft;
-                timeLeft -= 1;
+                timerElement.textContent = timeLeft; // Afficher le temps restant
+                timeLeft--; // Décrémenter le temps restant
             }
-        }, 1000);
+        }, 1000); // Répéter toutes les secondes
     }
 
     function stopTimer() {
-        clearInterval(interval);
-        updateTimerDisplay(timeLeft); // Affiche le temps restant sans réinitialiser
-    }
-
-    function resetTimer() {
-        clearInterval(interval);
-        updateTimerDisplay(30); // Réinitialise à 30 secondes
+        clearInterval(interval); // Arrêter le timer
+        updateTimerDisplay(timeLeft); // Afficher le temps restant
     }
 
     timeButtons.forEach(function(button) {
         button.addEventListener('click', function() {
-            updateTimerDisplay(parseInt(this.dataset.time, 10));
+            updateTimerDisplay(parseInt(this.dataset.time, 10)); // Mettre à jour le timer avec le temps du bouton cliqué
         });
     });
 
-    startButton.addEventListener('click', startTimer);
+    startButton.addEventListener('click', startTimer); // Démarrer le timer lorsque le bouton Démarrer est cliqué
+    stopButton.addEventListener('click', stopTimer); // Arrêter le timer lorsque le bouton Stop est cliqué
 
-    stopButton.addEventListener('click', function() {
-        stopTimer();
+    endSound.addEventListener('ended', function() {
+        updateTimerDisplay(30); // Réinitialiser à 30 secondes après la fin du son
     });
-
-    endSound.addEventListener('ended', resetTimer);
 });
