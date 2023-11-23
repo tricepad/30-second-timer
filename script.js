@@ -1,53 +1,55 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var timerLabel = document.getElementById('timer-label');
-    var endBreakButton = document.getElementById('end-break-button');
-    var progressRingCircle = document.querySelector('.progress-ring__circle');
-    var radius = progressRingCircle.r.baseVal.value;
-    var circumference = radius * 2 * Math.PI;
-    var totalTime = 180; // Exemple pour 3 minutes (180 secondes)
-    var timeLeft = totalTime;
-    progressRingCircle.style.strokeDasharray = `${circumference} ${circumference}`;
-    progressRingCircle.style.strokeDashoffset = circumference;
-    
-    function setProgress(percent) {
-        const offset = circumference - (percent / 100) * circumference;
-        progressRingCircle.style.strokeDashoffset = offset;
-    }
-    
-    function startTimer() {
+    const timerLabel = document.getElementById('timer-label');
+    const endBreakButton = document.getElementById('end-break-button');
+    const timerPathRemaining = document.getElementById('timer-path-remaining');
+    const radius = 90; // Rayon du cercle SVG
+    const circumference = 2 * Math.PI * radius;
+    let timeLeft = 180; // Temps initial en secondes (3 minutes)
+    let interval;
+
+    timerPathRemaining.style.strokeDasharray = `${circumference} ${circumference}`;
+    timerPathRemaining.style.strokeDashoffset = `${circumference}`;
+
+    function startTimer(duration) {
         clearInterval(interval);
-        interval = setInterval(function() {
-            timeLeft--;
-            timerElement.textContent = timeLeft.toString().padStart(2, '0');
-            setCircleDasharray(); // Mettre à jour le cercle de progression
+        let timePassed = 0;
+        timeLeft = duration;
+        interval = setInterval(() => {
+            timePassed = timePassed += 1;
+            timeLeft = duration - timePassed;
+            timerLabel.textContent = formatTime(timeLeft);
+            setCircleDashoffset(timeLeft, duration);
 
             if (timeLeft <= 0) {
                 clearInterval(interval);
-                endSound.play();
-                timeLeft = totalTime; // Réinitialiser le temps restant
-                setCircleDasharray(); // Réinitialiser le cercle de progression
+                timerLabel.textContent = 'Pause terminée';
             }
         }, 1000);
     }
 
-    // Arrêter le timer et réinitialiser le cercle de progression
-    function stopTimer() {
-        clearInterval(interval);
-        updateTimerDisplay(totalTime);
+    function setCircleDashoffset(time, duration) {
+        const dashoffset = circumference - (time / duration) * circumference;
+        timerPathRemaining.style.strokeDashoffset = dashoffset;
     }
 
-    // Ajout des écouteurs d'événements pour les boutons
-    startButton.addEventListener('click', startTimer);
-    stopButton.addEventListener('click', stopTimer);
+    function formatTime(time) {
+        const minutes = Math.floor(time / 60);
+        let seconds = time % 60;
 
-    timeButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            var newTime = parseInt(this.dataset.time, 10);
-            updateTimerDisplay(newTime);
-        });
+        if (seconds < 10) {
+            seconds = `0${seconds}`;
+        }
+
+        return `${minutes}:${seconds}`;
+    }
+
+    endBreakButton.addEventListener('click', function() {
+        clearInterval(interval);
+        timerLabel.textContent = '3:00';
+        timerPathRemaining.style.strokeDashoffset = circumference;
+        // Vous pouvez mettre à jour cette partie pour redémarrer le timer si nécessaire
     });
 
-    endSound.addEventListener('ended', function() {
-        stopTimer(); // Arrêter le timer et réinitialiser le cercle de progression
-    });
+    // Démarrage initial du timer
+    startTimer(180);
 });
