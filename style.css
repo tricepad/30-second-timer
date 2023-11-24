@@ -4,7 +4,8 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
 }
 
 #timer {
@@ -12,38 +13,9 @@ body {
     margin-bottom: 20px;
 }
 
-#timeButtons button {
-    margin: 5px;
-    padding: 10px;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#timeButtons button:hover {
-    background-color: #45a049;
-}
-
-#startButton, #stopButton {
-    margin-top: 30px;
+button {
     padding: 10px 20px;
-    border: none;
-    background-color: #4F8EF7;
-    color: white;
-    border-radius: 15px;
-    cursor: pointer;
+    margin: 5px;
     font-size: 18px;
-}
-
-#startButton:hover, #stopButton:hover {
-    background-color: #007B9E;
-}
-
-input[type="number"] {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    cursor: pointer;
 }
