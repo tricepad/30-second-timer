@@ -1,33 +1,31 @@
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+body, html {
     height: 100%;
-    font-family: 'Courier Prime', sans-serif;
-    background-color: #f7f7f7;
     margin: 0;
-    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
 }
+
 #timer {
-    font-size: 5vw; /* Utilisez des unités relatives pour le texte */
-    margin-bottom: 2vw;
-    margin-top: 3vw;
+    font-size: 5rem; /* ajustez la taille de police comme nécessaire */
     color: #242525;
 }
+
 .buttons-container {
     display: flex;
-    justify-content: center; /* Centre les boutons horizontalement */
-    gap: 1vw; /* Ajoute un espace entre les boutons */
+    gap: 1rem; /* ajustez l'espace entre les boutons comme nécessaire */
 }
+
 button {
-    padding: 1vw 2vw;
-    font-size: 1.5vw; /* Utilisez des unités relatives pour les boutons */
-    cursor: pointer;
+    padding: 0.5rem 1rem; /* ajustez le padding comme nécessaire */
+    font-size: 1rem; /* ajustez la taille de police des boutons comme nécessaire */
     border: none;
-    border-radius: 12px;
+    border-radius: 0.5rem; /* arrondit les coins des boutons */
     background-color: #242525;
     color: white;
+    cursor: pointer;
 }
 
 
