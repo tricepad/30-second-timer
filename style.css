@@ -1,53 +1,48 @@
-body, html {
-    height: 100%;
-    margin: 0;
+body {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #E0E5EC; /* Couleur de fond claire */
+    height: 100vh;
+    font-family: Arial, sans-serif;
 }
 
-.timer-container {
-    text-align: center;
-    font-family: 'Arial', sans-serif;
-}
-
-/* Style pour le cercle SVG */
-.timer-circle {
-    width: 200px;
-    height: 200px;
-}
-
-.timer-path-elapsed {
-    stroke: #D3D3D3;
-    stroke-width: 7;
-}
-
-.timer-path-remaining {
-    stroke: #4F8EF7;
-    stroke-width: 7;
-    stroke-linecap: round;
-    transform: rotate(-90deg);
-    transform-origin: 50% 50%;
-    transition: stroke-dashoffset 1s linear;
-}
-
-.timer-label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+#timer {
     font-size: 48px;
-    color: #333;
+    margin-bottom: 20px;
 }
 
-#end-break-button {
-    margin-top: 30px;
+#timeButtons button {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#timeButtons button:hover {
+    background-color: #45a049;
+}
+
+#startButton, #stopButton {
+    margin: 10px;
     padding: 10px 20px;
     border: none;
-    background-color: #4F8EF7;
+    background-color: #008CBA;
     color: white;
-    border-radius: 15px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 18px;
+}
+
+#startButton:hover, #stopButton:hover {
+    background-color: #007B9E;
+}
+
+input[type="number"] {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
