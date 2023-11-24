@@ -2,42 +2,32 @@ body, html {
     height: 100%;
     margin: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* empile les éléments verticalement */
+    justify-content: center; /* centre les éléments verticalement */
+    align-items: center; /* centre les éléments horizontalement */
     font-family: 'Arial', sans-serif;
     background-color: #f7f7f7;
 }
 
 #timer {
     font-size: 5rem; /* ajustez la taille de police comme nécessaire */
+    margin-bottom: 1rem; /* espace entre le timer et les boutons */
     color: #242525;
 }
 
 .buttons-container {
     display: flex;
-    gap: 1rem; /* ajustez l'espace entre les boutons comme nécessaire */
+    width: 100%;
+    justify-content: center; /* centre les boutons dans le conteneur */
+    gap: 1rem; /* espace entre les boutons */
 }
 
 button {
-    padding: 0.5rem 1rem; /* ajustez le padding comme nécessaire */
-    font-size: 1rem; /* ajustez la taille de police des boutons comme nécessaire */
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
     border: none;
-    border-radius: 0.5rem; /* arrondit les coins des boutons */
+    border-radius: 0.5rem;
     background-color: #242525;
     color: white;
     cursor: pointer;
 }
-
-
-/* Media queries pour les tailles d'écran spécifiques */
-@media (max-width: 600px) {
-    #timer {
-        font-size: 10vw; /* Taille de police plus grande pour les petits écrans */
-    }
-
-    button {
-        font-size: 3vw; /* Taille de police plus grande pour les boutons sur petits écrans */
-        padding: 2vw 4vw;
-    }
-}
-
