@@ -16,7 +16,7 @@ body {
 }
 
 button {
-    padding: 1vw 2vw;
+    padding: 3vw 3vw;
     margin: 0.5vw;
     font-size: 1.5vw; /* Utilisez des unités relatives pour les boutons */
     cursor: pointer;
