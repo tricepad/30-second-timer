@@ -4,29 +4,32 @@ body {
     align-items: center;
     justify-content: center;
     height: 100%;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Courier Prime', sans-serif;
     background-color: #f7f7f7;
     margin: 0;
     padding: 0;
 }
-
 #timer {
     font-size: 5vw; /* Utilisez des unités relatives pour le texte */
     margin-bottom: 2vw;
-    margin-top:3vw;
+    margin-top: 3vw;
     color: #242525;
 }
-
+.buttons-container {
+    display: flex;
+    justify-content: center; /* Centre les boutons horizontalement */
+    gap: 1vw; /* Ajoute un espace entre les boutons */
+}
 button {
     padding: 1vw 2vw;
-    margin: 0.5vw;
     font-size: 1.5vw; /* Utilisez des unités relatives pour les boutons */
     cursor: pointer;
     border: none;
-    border-radius: 15px;
+    border-radius: 12px;
     background-color: #242525;
     color: white;
 }
+
 
 /* Media queries pour les tailles d'écran spécifiques */
 @media (max-width: 600px) {
