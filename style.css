@@ -13,10 +13,11 @@ body {
 #timer {
     font-size: 5vw; /* Utilisez des unités relatives pour le texte */
     margin-bottom: 2vw;
+    margin-top:3vw;
 }
 
 button {
-    padding: 3vw 3vw;
+    padding: 1vw 2vw;
     margin: 0.5vw;
     font-size: 1.5vw; /* Utilisez des unités relatives pour les boutons */
     cursor: pointer;
