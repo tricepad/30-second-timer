@@ -6,23 +6,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="timer-container">
-    <svg class="timer-circle" viewBox="0 0 100 100">
-        <circle class="timer-path-elapsed" cx="50" cy="50" r="45" fill="none" />
-        <path class="timer-path-remaining" stroke-dasharray="283" stroke-dashoffset="283" d="
-            M 50, 50
-            m -45, 0
-            a 45,45 0 1,0 90,0
-            a 45,45 0 1,0 -90,0
-        " fill="none" />
-    </svg>
-    <div id="timer-label">3:02</div>
-    <button id="end-break-button">Finir la pause</button>
-</div>
-  <button id="end-break-button">End break</button>
-</div>
-
-    <button id="end-break-button" class="end-break-button">Finir la pause</button>
+    <body>
+    <div id="timer">30</div>
+    <div id="timeButtons">
+    <button class="timeButton" data-time="30">30 secondes</button>
+    <input type="number" id="customTime" placeholder="Choix libre (en secondes)" min="1">
+    <button id="stopButton">Stop</button>
+    <button id="startButton">Démarrer</button>
+    <audio id="endSound" src="https://github.com/tricepad/30-second-timer/raw/main/6150.mp3"></audio>
     <script src="script.js"></script>
 </body>
 </html>
